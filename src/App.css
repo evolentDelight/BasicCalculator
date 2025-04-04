@@ -1,0 +1,14 @@
+.container{
+  background-color: black;
+  width: 85%;
+  margin: auto;
+
+  color: white;
+
+  padding: 5%;
+
+  border-radius: 15px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-variant-numeric: tabular-nums;
+}

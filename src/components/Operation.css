@@ -1,0 +1,46 @@
+.operation-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.input-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.operation{
+  align-self: end;
+  padding-top: 0.80em;
+  padding-bottom: 0.80em;
+}
+
+button{
+  border-radius: 100px;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 1em;
+  background-color: grey;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+
+  text-align: center;
+  color: white;
+  width: 20vw;
+  min-width: 75px;
+}
+
+input:focus {
+  background-color:cadetblue;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696,
+             -13px -13px 100px #ffffff;
+}
