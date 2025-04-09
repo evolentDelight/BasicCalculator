@@ -7,24 +7,22 @@ function App() {
   const [values, setValues] = useState({left: "", right: ""})
   const [operation, setOperation] = useState("Addition")
 
-  function handleLeftNumberSignConversion(){
-    setValues(function(prevValues){
-      return(
-        {
-          left: -prevValues.left,
-          right: prevValues.right
-        }
-      )
-    })
-  }
+  const handleSignConversion = (operand) => (
+    setValues(prevValues =>(
+      {
+        ...prevValues,
+        [operand]: -prevValues[operand]
+      }
+    ))
+  )
 
-  function handleLeftNumber(event){
+  const handleNumberChange = (operand) => (event) => {
     let input = event.target.value.trim();//trim() to remove all whitespace
     if(input === "-"){//When there is only a minus(-) sign left during deletion, turn to 0
       setValues(prevValues =>(
           {
-            left: "",
-            right: prevValues.right
+            ...prevValues,
+            [operand]: ""
           }
         )
       )
@@ -33,40 +31,8 @@ function App() {
       setValues(
         (prevValues) => (
           {
-            left: input,
-            right: prevValues.right
-          }
-        )
-      )
-    }
-  }
-
-  function handleRightNumberSignConversion(){
-    setValues(
-      (prevValues) => ({
-        left: prevValues.left,
-        right: -prevValues.right
-      })
-    )
-  }
-
-  function handleRightNumber(event){
-    let input = event.target.value.trim();//trim() to remove all whitespace
-    if(input === "-"){//When there is only a minus(-) sign left during deletion, turn to 0
-      setValues(prevValues =>(
-          {
-            left: prevValues.left,
-            right: ""
-          }
-        )
-      )
-    }
-    if(!isNaN(Number(input))){//if Number
-      setValues(
-        (prevValues) =>(
-          {
-            left: prevValues.left,
-            right: input
+            ...prevValues,
+            [operand]: input
           }
         )
       )
@@ -88,10 +54,10 @@ function App() {
     <div className='container'>
       <Operation
         values={values}
-        onLeftNumberChange={handleLeftNumber}
-        onLeftNumberSignChange={handleLeftNumberSignConversion}
-        onRightNumberChange={handleRightNumber}
-        onRightNumberSignChange={handleRightNumberSignConversion}
+        onLeftNumberChange={handleNumberChange("left")}
+        onLeftNumberSignChange={() => handleSignConversion("left")}
+        onRightNumberChange={handleNumberChange("right")}
+        onRightNumberSignChange={() => handleSignConversion("right")}
         onOperationChange={handleOperation}
       />
       <Result calculationResult={result}/>
