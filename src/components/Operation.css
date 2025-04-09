@@ -1,4 +1,4 @@
-.operation-container{
+.operation-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -7,19 +7,19 @@
   margin-bottom: 5%;
 }
 
-.input-container{
+.input-container {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.operation{
+.operation {
   align-self: end;
-  padding-top: 0.80em;
-  padding-bottom: 0.80em;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
 }
 
-button{
+button {
   border-radius: 100px;
 }
 
@@ -29,18 +29,17 @@ input {
   border-radius: 15px;
   padding: 1em;
   background-color: grey;
-  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
   transition: 300ms ease-in-out;
 
   text-align: center;
   color: white;
-  width: 20vw;
+  width: 25vw;
   min-width: 75px;
 }
 
 input:focus {
-  background-color:cadetblue;
+  background-color: cadetblue;
   transform: scale(1.05);
-  box-shadow: 13px 13px 100px #969696,
-             -13px -13px 100px #ffffff;
+  box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
 }
