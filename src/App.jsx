@@ -43,22 +43,34 @@ function App() {
   }
 
   const calculateResult = () => {
+    //if either operand's value is empty, result is "_" or nothing
+    if (!values.left || !values.right) return "_";
+
     const leftOperand = Number(values.left);
     const rightOperand = Number(values.right);
 
-    //Both operands must be a number, otherwise returns _ or "nothing"
-    if (!(leftOperand && rightOperand)) return "_";
+    if (!Number.isFinite(leftOperand) || !Number.isFinite(rightOperand))
+      return "Max Number Reached";
+
+    let result;
 
     switch (operation) {
       case OPERATIONS.ADDITION:
-        return leftOperand + rightOperand;
+        result = leftOperand + rightOperand;
+        break;
       case OPERATIONS.SUBTRACTION:
-        return leftOperand - rightOperand;
+        result = leftOperand - rightOperand;
+        break;
       case OPERATIONS.MULTIPLICATION:
-        return leftOperand * rightOperand;
+        result = leftOperand * rightOperand;
+        break;
       case OPERATIONS.DIVISION:
-        return rightOperand !== 0 ? leftOperand / rightOperand : "Undefined";
+        result = rightOperand !== 0 ? leftOperand / rightOperand : "Undefined";
+        break;
     }
+
+    if (result === "Undefined") return result;
+    else return Number.isFinite(result) ? result : "Max Number Reached";
   };
 
   return (
