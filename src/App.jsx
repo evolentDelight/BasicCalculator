@@ -46,6 +46,9 @@ function App() {
     const leftOperand = Number(values.left);
     const rightOperand = Number(values.right);
 
+    //Both operands must be a number, otherwise returns _ or "nothing"
+    if (!(leftOperand && rightOperand)) return "_";
+
     switch (operation) {
       case OPERATIONS.ADDITION:
         return leftOperand + rightOperand;
