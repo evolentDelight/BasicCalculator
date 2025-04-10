@@ -3,9 +3,16 @@ import "./App.css";
 import Operation from "./components/Operation";
 import Result from "./components/Result";
 
+const OPERATIONS = {
+  ADDITION: "Addition",
+  SUBTRACTION: "Subtraction",
+  MULTIPLICATION: "Multiplication",
+  DIVISION: "Division",
+};
+
 function App() {
   const [values, setValues] = useState({ left: "", right: "" });
-  const [operation, setOperation] = useState("Addition");
+  const [operation, setOperation] = useState(OPERATIONS.ADDITION);
 
   const handleSignConversion = (operand) =>
     setValues((prevValues) => ({
@@ -35,16 +42,21 @@ function App() {
     setOperation(event.target.value);
   }
 
-  let result = 0;
+  const calculateResult = () => {
+    const leftOperand = Number(values.left);
+    const rightOperand = Number(values.right);
 
-  if (operation === "Addition")
-    result = Number(values.left) + Number(values.right);
-  if (operation === "Subtraction")
-    result = Number(values.left) - Number(values.right);
-  if (operation === "Multiplication")
-    result = Number(values.left) * Number(values.right);
-  if (operation === "Division")
-    result = Number(values.left) / Number(values.right);
+    switch (operation) {
+      case OPERATIONS.ADDITION:
+        return leftOperand + rightOperand;
+      case OPERATIONS.SUBTRACTION:
+        return leftOperand - rightOperand;
+      case OPERATIONS.MULTIPLICATION:
+        return leftOperand * rightOperand;
+      case OPERATIONS.DIVISION:
+        return rightOperand !== 0 ? leftOperand / rightOperand : "Undefined";
+    }
+  };
 
   return (
     <div className="container">
@@ -56,7 +68,7 @@ function App() {
         onRightNumberSignChange={() => handleSignConversion("right")}
         onOperationChange={handleOperation}
       />
-      <Result calculationResult={result} />
+      <Result calculationResult={calculateResult()} />
     </div>
   );
 }
