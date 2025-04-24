@@ -36,6 +36,13 @@ function App() {
         [operand]: input,
       }));
     }
+    if (input === ".") {
+      //if only dot is entered, set to 0.
+      setValues((prevValues) => ({
+        ...prevValues,
+        [operand]: "0.",
+      }));
+    }
   };
 
   function handleOperation(event) {
